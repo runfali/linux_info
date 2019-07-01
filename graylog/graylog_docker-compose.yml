@@ -1,0 +1,65 @@
+version: '2'
+services:
+  graylog-mongo:
+    restart: always
+    image: mongo:3
+    container_name: graylog-mongo
+    volumes:
+      - /data/graylog-mongo:/data/db
+  graylog-elasticsearch:
+    restart: always
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.6.1
+    container_name: graylog-elasticsearch
+    volumes:
+      - /data/graylog-elasticsearch:/usr/share/elasticsearch/data
+    environment:
+      - http.host=0.0.0.0
+      - transport.host=localhost
+      - network.host=0.0.0.0
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    mem_limit: 1g
+  graylog:
+    restart: always
+    image: graylog/graylog:3.0
+    container_name: graylog
+    volumes:
+      - /data/graylog/config:/usr/share/graylog/data/config
+      # 配置文件这里挂载
+      - /data/graylog/data:/usr/share/graylog/data/journal
+      # 持久化数据
+    environment:
+      - GRAYLOG_HTTP_ENABLE_CORS=true
+      - GRAYLOG_HTTP_EXTERNAL_URI=http://10.18.193.34:9000/
+      # 改为宿主机 IP 地址
+      - GRAYLOG_PASSWORD_SECRET=gr8r3hbnvfs73b8wefhweufpokdnc
+      # 密码验证，随便改
+      - GRAYLOG_ROOT_USERNAME=admin
+      # 管理员名称
+      - GRAYLOG_ROOT_PASSWORD_SHA2=3830cd9a249f1f69bdd57c783d12fc569a3e11f2bd2418fa406dcb76a5215e1a
+      # 密码需要填写 SHA256 加密的密文，例如这里是 itsupport.0
+      # echo -n "Enter Password: " && head -1 </dev/stdin | tr -d '\n' | sha256sum | cut -d" " -f1
+      # Enter Password: itsupport.0
+      #- GRAYLOG_ELASTICSEARCH_HOSTS=http://graylog-elasticsearch:9200
+      # elasticsearch host 这里不需要
+      #- GRAYLOG_MONGODB_URI=mongodb://graylog-mongo/graylog
+      # mongo host 这里不需要
+      - GRAYLOG_ROOT_TIMEZONE=Asia/Shanghai
+      # 时区
+      # 其他配置请参考 graylog.conf 文件, 在需要覆盖的配置项前面加 "GRAYLOG_"，换成大写
+    links:
+      - graylog-mongo:mongo
+      - graylog-elasticsearch:elasticsearch
+    depends_on:
+      - graylog-mongo
+      - graylog-elasticsearch
+    ports:
+      - 9000:9000
+      - 1514:1514
+      - 1514:1514/udp
+      - 12201:12201
+      - 12201:12201/udp

@@ -1,0 +1,12 @@
+---
+- hosts: "{{ host }}"
+  tasks:
+    - name: 删除iptables规则
+      lineinfile:
+        dest: /etc/sysconfig/iptables
+        regexp: '-A INPUT -p tcp -m state --state NEW -m tcp --dport {{ port }} -j ACCEPT'        
+        state: absent
+    - name: 重启iptables
+      service:
+        name: iptables.service
+        state: restarted

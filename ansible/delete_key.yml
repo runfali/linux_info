@@ -1,0 +1,19 @@
+---
+- hosts: "{{ host }}"
+  gather_facts: False
+  remote_user: root
+  tasks:
+    - name: 删除用户名
+      lineinfile:
+        path: /root/.ssh/authorized_keys
+        line: '{{ key_name }}'
+        state: absent
+    - name: 删除key
+      lineinfile:
+        dest: /root/.ssh/authorized_keys
+        line: '{{ key }}'
+        state: absent
+    - name: 重启sshd
+      service:
+        name: sshd.service
+        state: restarted

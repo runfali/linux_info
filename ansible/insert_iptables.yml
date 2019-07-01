@@ -1,0 +1,14 @@
+---
+- hosts: "{{ host }}"
+  tasks:
+    - name: 插入iptables规则
+      lineinfile:
+        dest: /etc/sysconfig/iptables
+        line: "{{item.line}}"
+        insertafter: "-A INPUT -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT"
+      with_items:
+        - { line: "-A INPUT -p tcp -m state --state NEW -m tcp --dport {{ port }} -j ACCEPT"}
+    - name: 重启iptables
+      service:
+        name: iptables.service
+        state: restarted

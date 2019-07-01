@@ -1,0 +1,1 @@
+ansible-playbook --extra-vars "{'host':'主机名或IP','key_name':'#+用户名','key':'key内容'}" insert_key.yml

@@ -1,0 +1,4 @@
+[office] 
+#组名
+dev-of-maven-21 ansible_ssh_host=10.18.193.21 ansible_ssh_pass="szCF2018"
+#分别代表主机名、IP、ssh 密码（默认是root）
