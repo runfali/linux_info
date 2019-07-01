@@ -32,8 +32,8 @@ sed -i 's#4096#65536#g' /etc/security/limits.d/20-nproc.conf
 # 修正系统时间
 echo "修正系统时间并写入定时任务！"
 sleep 5
-(crontab -l;echo '*/10 * * * * /usr/sbin/ntpdate ntp1.aliyun.com && /usr/sbin/hwclock -w') | crontab
-echo '*/10 * * * * root /usr/sbin/ntpdate ntp1.aliyun.com && /usr/sbin/hwclock -w' >> /etc/crontab
+(crontab -l;echo '*/30 * * * * /usr/sbin/ntpdate ntp1.aliyun.com && /usr/sbin/hwclock -w') | crontab
+echo '*/30 * * * * root /usr/sbin/ntpdate ntp1.aliyun.com && /usr/sbin/hwclock -w' >> /etc/crontab
 
 
 # 内核参数调优
