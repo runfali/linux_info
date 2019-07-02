@@ -4,7 +4,12 @@ sleep 5
 rpm -Uvh https://repo.zabbix.com/zabbix/4.2/rhel/7/x86_64/zabbix-release-4.2-1.el7.noarch.rpm
 yum install -y https://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/remi-release-7.rpm
 curl https://download.docker.com/linux/centos/docker-ce.repo -o /etc/yum.repos.d/docker.repo
-yum install -y lrzsz vim systemd bash-completion gcc cmake bzip2-devel curl-devel db4-devel libjpeg-devel libpng-devel freetype-devel libXpm-devel gmp-devel libc-client-devel openldap-devel unixODBC-devel postgresql-devel sqlite-devel aspell-devel net-snmp libxslt-devel libxml2-devel pcre-devel mysql-devel libmemcached libmemcached-devel zlib-devel tree htop net-tools openssl-devel.x86_64 gcc-c++.x86_64 iftop iotop lsof zabbix-agent nmap dos2unix telnet screen wget ntp rsync iptables-services docker-ce.x86_64 cifs-utils autossh openssh-clients openssh-server openssh
+yum install -y lrzsz vim systemd bash-completion gcc cmake bzip2-devel curl-devel db4-devel libjpeg-devel libpng-devel freetype-devel libXpm-devel gmp-devel libc-client-devel openldap-devel unixODBC-devel postgresql-devel sqlite-devel aspell-devel net-snmp libxslt-devel libxml2-devel pcre-devel mysql-devel libmemcached libmemcached-devel zlib-devel tree htop net-tools openssl-devel.x86_64 gcc-c++.x86_64 iftop iotop lsof zabbix-agent nmap dos2unix telnet screen wget ntp rsync iptables-services docker-ce.x86_64 cifs-utils autossh openssh-clients openssh-server openssh python36-devel python36-pip.noarch
+
+# 安装 docker-compose
+echo "安装 docker-compose"
+sleep 5
+pip3.6 install docker-compose
 
 # 关闭 SElinux
 echo "关闭 SElinux！"
