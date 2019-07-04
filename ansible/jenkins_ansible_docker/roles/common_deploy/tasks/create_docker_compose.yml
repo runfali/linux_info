@@ -1,0 +1,7 @@
+---
+  - name: 创建 Docker-Compose
+    template:
+      src: /etc/ansible/roles/common_deploy/files/docker_compose.template
+      dest: /etc/ansible/roles/common_deploy/source/docker-compose.yml
+      mode: 0644
+    delegate_to: localhost

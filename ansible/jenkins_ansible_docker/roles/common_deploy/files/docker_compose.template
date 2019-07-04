@@ -1,0 +1,10 @@
+version: '3'
+services:
+  {{image_name}}:
+    build: {{server_dockerfile_dir}}
+    container_name: {{container_name}}
+    hostname: {{container_hostname}}
+    ports:
+      - {{server_port}}:{{container_dport}}
+    volumes:
+      - {{server_dir}}:{{container_dir}}

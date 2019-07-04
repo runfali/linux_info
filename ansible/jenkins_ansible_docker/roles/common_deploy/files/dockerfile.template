@@ -1,0 +1,4 @@
+From 10.18.193.26/cf/{{image}}
+MAINTAINER cf info@chainedfinance.com
+RUN mkdir -p {{container_dir}}
+CMD {{container_cmd}}

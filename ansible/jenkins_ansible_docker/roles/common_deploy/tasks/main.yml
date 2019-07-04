@@ -1,0 +1,6 @@
+---
+    - include: create_dockerfile.yml
+    - include: create_docker_compose.yml
+    - include: get_package_from_jenkins.yml
+    - include: put_file_to_server.yml
+    - include: run.yml

@@ -1,0 +1,7 @@
+---
+  - name: 把构建好的包放到 ansible 本地
+    fetch: 
+      src: /data/jenkins_home/workspace/{{project}}/target/{{filename}}
+      dest: /etc/ansible/roles/common_deploy/source/{{filename}}
+      flat: yes
+    delegate_to: dev-of-runfa-36

@@ -1,0 +1,15 @@
+---
+  - name: 把包发送到服务器
+    copy:
+      src: /etc/ansible/roles/common_deploy/source/{{filename}}
+      dest: /tmp/{{filename}}
+      mode: 0644
+  - name: 请空目标目录
+    shell: rm -rf {{server_dir}}/*
+  - name: 解压压缩包并删除
+    unarchive:
+      src: /tmp/{{filename}}
+      dest: "{{server_dir}}"
+      remote_src: yes
+  - name: 运行服务
+    shell: "{{cmd}}"

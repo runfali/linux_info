@@ -13,6 +13,17 @@
         path: /root/.ssh/authorized_keys
         state: present
         line: '{{ key }}'
+    - name: 关闭密码登陆
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        state: present
+        regexp: '^PasswordAuthentication'
+        line: 'PasswordAuthentication no'
+    - name: 设置 DNS no
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        state: present
+        line: 'UseDNS no'
     - name: 重启sshd
       service:
         name: sshd.service

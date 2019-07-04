@@ -1,0 +1,9 @@
+---
+  - name: 把 dockerfile 和 docker-compose 传输到服务器
+    copy:
+      src: '{{ item.src }}'
+      dest: '{{ item.dest }}'
+      mode: 0644
+    with_items:
+      - { src: '/etc/ansible/roles/common_deploy/source/dockerfile',dest: '/data/docker/dockerfile/website/dockerfile' }
+      - { src: '/etc/ansible/roles/common_deploy/source/docker-compose.yml',dest: '/data/docker/dockerfile/website/docker-compose.yml' }

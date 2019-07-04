@@ -1,0 +1,13 @@
+version: '3'
+services:
+  cf_web:
+    build: /data/docker/dockerfile/website
+    container_name: cf_web
+    hostname: cf_web
+    ports:
+      - ${SPORT}:9090
+    volumes:
+      - /data/website:/data/website
+# 设置变量 export SPORT=9090
+# 启动 docker-compose up -d
+# 停止并删除 docker-compose down --rmi all
