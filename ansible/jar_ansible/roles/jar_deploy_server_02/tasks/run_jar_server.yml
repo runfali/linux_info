@@ -1,0 +1,11 @@
+---
+  - name: 启动 sc-payment
+    shell: /data/shell/all/start_jar.sh sc-payment && sleep 10
+  - name: 启动 sc-bussiness
+    shell: /data/shell/all/start_jar.sh sc-bussiness && sleep 10
+  - name: 启动 sc-inventory
+    shell: /data/shell/all/start_jar.sh sc-inventory && sleep 10
+  - name: 启动 sc-payment
+    shell: /data/shell/all/start_jar.sh sc-payment && sleep 10
+  - name: 记录 PID
+    shell: ps aux | grep "java" | grep -v grep | awk '{print $2}'  > /tmp/jar.pid

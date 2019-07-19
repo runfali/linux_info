@@ -1,0 +1,14 @@
+---
+
+  - name: 删除所有 jar 包
+    shell: rm -rf /data/jar/*
+  - name: 把 jar 包
+    copy:
+      src: '{{ item.src }}'
+      dest: '{{ item.dest }}'
+      mode: 0755
+    with_items:
+      - { src: '/etc/ansible/data/mws-finance',dest: '/data/jar/' }
+      - { src: '/etc/ansible/data/mws-order',dest: '/data/jar/' }
+      - { src: '/etc/ansible/data/mws-product',dest: '/data/jar/' }				
+

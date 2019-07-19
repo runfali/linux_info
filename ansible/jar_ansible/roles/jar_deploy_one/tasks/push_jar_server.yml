@@ -1,0 +1,10 @@
+---
+  - name: 删除 jar 包
+    shell: rm -rf /data/jar/{{name}}
+  - name: 把 jar 包传输到服务器
+    copy:
+      src: '{{ item.src }}'
+      dest: '{{ item.dest }}'
+      mode: 0755
+    with_items:
+      - { src: '/etc/ansible/data/{{name}}',dest: '/data/jar/' }

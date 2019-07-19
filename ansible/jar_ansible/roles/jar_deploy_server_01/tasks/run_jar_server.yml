@@ -1,0 +1,9 @@
+---
+  - name: 启动 mws-finance
+    shell: /data/shell/all/start_jar.sh mws-finance && sleep 10
+  - name: 启动 mws-order
+    shell: /data/shell/all/start_jar.sh mws-order && sleep 10
+  - name: 启动 mws-product
+    shell: /data/shell/all/start_jar.sh mws-product && sleep 10
+  - name: 记录 PID
+    shell: ps aux | grep "java" | grep -v grep | awk '{print $2}'  > /tmp/jar.pid

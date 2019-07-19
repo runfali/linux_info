@@ -1,0 +1,10 @@
+这个为使用 ansible 做 jar 包的批量或单独发布
+
+特定群组发布特定包：
+ansible-playbook -e "host=群组名" deploy_jar_server_01.yml
+ansible-playbook -e "host=群组名" deploy_jar_server_02.yml
+
+发布指定包：
+ansible-playbook deploy_jar_one.yml --extra-vars "{'host':'jar','name':'项目名'}"
+
+在 /data 下建项目 jar 包目录，然后修改对应 yml 或 shell

@@ -1,0 +1,14 @@
+---
+  - name: 删除所有 jar 包
+    shell: rm -rf /data/jar/*
+  - name: 把 jar 包传输到服务器
+    copy:
+      src: '{{ item.src }}'
+      dest: '{{ item.dest }}'
+      mode: 0755
+    with_items:
+      - { src: '/etc/ansible/data/sc-advertising',dest: '/data/jar/' }
+      - { src: '/etc/ansible/data/sc-bussiness',dest: '/data/jar/' }
+      - { src: '/etc/ansible/data/sc-inventory',dest: '/data/jar/' }
+      - { src: '/etc/ansible/data/sc-payment',dest: '/data/jar/' }				
+

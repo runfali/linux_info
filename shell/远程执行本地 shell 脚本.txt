@@ -1,0 +1,1 @@
+ssh root@10.18.193.25 'bash -s' < /root/bak.sh

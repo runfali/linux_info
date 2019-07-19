@@ -1,0 +1,11 @@
+---
+  - name: 把 shell 脚本传输到服务器
+    copy:
+      src: '{{ item.src }}'
+      dest: '{{ item.dest }}'
+      mode: 0755
+    with_items:
+      - { src: '/etc/ansible/data/kill_jar.sh',dest: '/data/shell/all/' }
+      - { src: '/etc/ansible/data/start_jar.sh',dest: '/data/shell/all/' }
+  - name: 根据 PID kill 服务
+    shell: /data/shell/all/kill_jar.sh && sleep 5

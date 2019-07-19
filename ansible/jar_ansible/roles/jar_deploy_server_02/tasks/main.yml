@@ -1,0 +1,4 @@
+---
+    - include: push_shell_server.yml
+    - include: push_jar_server.yml
+    - include: run_jar_server.yml

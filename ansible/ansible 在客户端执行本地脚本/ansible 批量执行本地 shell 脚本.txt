@@ -1,0 +1,12 @@
+hosts 写法
+[office]
+dev-of-runfa-20 ansible_ssh_host=10.18.193.20 ansible_ssh_pass="itsupport.0"
+dev-of-runfa-36 ansible_ssh_host=10.18.193.36 ansible_ssh_pass="itsupport.0"
+
+shell 脚本写法
+#!/bin/bash
+i=`/usr/sbin/ifconfig ens192 |grep inet | awk '{print $2}'|grep -v :`
+echo $i
+
+执行命令
+ansible office -m script -a '/root/bak.sh'
