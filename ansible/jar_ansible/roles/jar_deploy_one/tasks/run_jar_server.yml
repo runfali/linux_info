@@ -1,3 +1,5 @@
 ---
   - name: 启动 {{name}}
     shell: /data/shell/one/start_jar.sh {{name}} && sleep 10
+  - name: 记录最新的 PID
+    shell: ps aux | grep "java" | grep -v grep | awk '{print $2}'  > /tmp/jar.pid
