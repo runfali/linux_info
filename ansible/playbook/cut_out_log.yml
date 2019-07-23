@@ -1,0 +1,6 @@
+---
+- hosts: "{{ host }}"
+  remote_user: root
+  tasks:
+    - name: 捞取日志信息
+      shell: /data/shell/cut_out_log.sh {{name}}

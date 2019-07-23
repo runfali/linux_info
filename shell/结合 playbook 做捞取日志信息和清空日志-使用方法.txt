@@ -1,0 +1,9 @@
+shell 使用方法
+clear_log.sh 按需求修改路径即可
+cut_out_log.sh 
+执行方式为 "cut_out_log.sh 项目名称"，当项目名称为 "all" 时，则捞取所有日志信息
+按需修改项目名称及其日志路径即可
+
+ansible-playbook 使用方法
+ansible-playbook -e "host=群组或主机名" clear_log.yml
+ansible-playbook cut_out_log.yml --extra-vars "{'host':'群组或主机名','name':'具体的项目名称或 all'}"

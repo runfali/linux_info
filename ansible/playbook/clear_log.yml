@@ -1,0 +1,6 @@
+---
+- hosts: "{{ host }}"
+  remote_user: root
+  tasks:
+    - name: 清空所有日志信息
+      shell: /data/shell/clear_log.sh
