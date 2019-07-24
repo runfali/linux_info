@@ -14,7 +14,7 @@ pip3.6 install docker-compose
 # 关闭 SElinux
 echo "关闭 SElinux！"
 sleep 5
-sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
+sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 
 # 关闭 firewalld 和 iptables
 echo "关闭 firewalld 和 iptables！"
