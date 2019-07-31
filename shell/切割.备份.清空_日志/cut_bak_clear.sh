@@ -18,22 +18,23 @@ function Help {
 function sc-advertising {
     mkdir -p /data/log
     tail -n 10000 /usr/local/bison_java/log/sc-advertising.log > /data/log/sc-advertising.log
-    rm -rf /usr/local/bison_java/log/sc-advertising.log && \mv /data/log/sc-advertising.log /usr/local/bison_java/log/
+    cat /data/log/sc-advertising.log > /usr/local/bison_java/log/sc-advertising.log
+    
 }
 function sc-bussiness {
     mkdir -p /data/log
     tail -n 10000 /usr/local/bison_java/log/sc-bussiness.log > /data/log/sc-bussiness.log
-    rm -rf /usr/local/bison_java/log/sc-bussiness.log && \mv /data/log/sc-bussiness.log /usr/local/bison_java/log/
+    cat /data/log/sc-bussiness.log > /usr/local/bison_java/log/sc-bussiness.log
 }
 function sc-inventory {
     mkdir -p /data/log
     tail -n 10000 /usr/local/bison_java/log/sc-inventory.log > /data/log/sc-inventory.log
-    rm -rf /usr/local/bison_java/log/sc-inventory.log && \mv /data/log/sc-inventory.log /usr/local/bison_java/log/
+    cat /data/log/sc-inventory.log > /usr/local/bison_java/log/sc-inventory.log
 }
 function sc-payment {
     mkdir -p /data/log
     tail -n 10000 /usr/local/bison_java/log/sc-payment.log > /data/log/sc-payment.log
-    rm -rf /usr/local/bison_java/log/sc-payment.log && \mv /data/log/sc-payment.log /usr/local/bison_java/log/
+    cat /data/log/sc-payment.log > /usr/local/bison_java/log/sc-payment.log
 }
 function all {
     mkdir -p /data/log
@@ -41,7 +42,10 @@ function all {
     tail -n 10000 /usr/local/bison_java/log/sc-bussiness.log > /data/log/sc-bussiness.log
     tail -n 10000 /usr/local/bison_java/log/sc-inventory.log > /data/log/sc-inventory.log
     tail -n 10000 /usr/local/bison_java/log/sc-payment.log > /data/log/sc-payment.log
-    rm -rf /usr/local/bison_java/log/* && \mv /data/log/* /usr/local/bison_java/log/
+    cat /data/log/sc-advertising.log > /usr/local/bison_java/log/sc-advertising.log
+    cat /data/log/sc-bussiness.log > /usr/local/bison_java/log/sc-bussiness.log
+    cat /data/log/sc-inventory.log > /usr/local/bison_java/log/sc-inventory.log
+    cat /data/log/sc-payment.log > /usr/local/bison_java/log/sc-payment.log
 }
 
 #备份日志

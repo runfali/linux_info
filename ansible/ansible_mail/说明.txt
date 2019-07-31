@@ -1,0 +1,10 @@
+server 端：
+假设 mail.py 在 /home/shell/ 目录下
+假设 server.sh 在 /home/shell/ 目录下
+
+ansible 端：
+假设 check_services.yml 在 /etc/ansible/playbook/ 目录下
+假设 check_services_on_ansible.sh 在 /home/shell/ 目录下
+假设 第一个群组名为 01，第二个群组名为 02
+假设 01 群组部署的服务名记录在 /home/shell/01.log
+假设 01 群组部署的服务名记录在 /home/shell/02.log

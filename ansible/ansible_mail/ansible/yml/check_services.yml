@@ -1,0 +1,6 @@
+---
+- hosts: "{{ host }}"
+  remote_user: root
+  tasks:
+    - name: 检测远端服务是否正常
+      shell: /home/shell/server.sh {{name}}
